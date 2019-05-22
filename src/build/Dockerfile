@@ -1,0 +1,9 @@
+FROM openjdk:8-jdk-alpine
+
+ENV APPHOMEDIR /app/
+ENV APP_NAME ${APPHOMEDIR}app.jar
+WORKDIR ${APPHOMEDIR}
+COPY eurika-0.0.1-SNAPSHOT.jar $APP_NAME
+
+EXPOSE 8081
+CMD java -jar -Dspring.config.location=${SPRING_CONFIG_LOCATION} ${APP_NAME}
